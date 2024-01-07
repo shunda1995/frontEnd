@@ -1,0 +1,17 @@
+/* TokenStats.css */
+
+.token-stats-container {
+  float: right;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 600px;
+  margin-right: 1500px;
+  margin-top: 200px;
+}
+
+.stat-name {
+  font-weight: bold;
+  margin-right: 5px;
+}

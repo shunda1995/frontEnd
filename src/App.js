@@ -5,7 +5,7 @@ import Header from "./Header";
 import TokenStats from "./Tokenstats";
 import MintBurnRates from "./MintBurnRate";
 import QualifiedAddresses from "./QualifiedAddress";
-import "./App.css"; // Import your CSS file
+import "./App.css";
 
 const App = () => {
   const [web3, setWeb3] = useState(null);
@@ -15,17 +15,24 @@ const App = () => {
     // Add other qualified addresses as needed
   ];
 
+  const tokenStats = {
+    mintRate: 0.5,
+    burnRate: 0.5,
+    isBurning: true,
+    macroContraction: true,
+    turn: 0,
+    airdropAddress: "0xF70f439469028A637E3917ab768E7cE686BA4F7d",
+  };
+
   useEffect(() => {
     const initWeb3 = async () => {
       if (window.ethereum) {
         try {
-          // Request account access if needed
           await window.ethereum.request({ method: "eth_requestAccounts" });
 
           const web3Instance = new Web3(window.ethereum);
           setWeb3(web3Instance);
 
-          // Get the list of accounts
           const accs = await web3Instance.eth.getAccounts();
           setAccounts(accs);
         } catch (error) {
@@ -47,7 +54,6 @@ const App = () => {
       const web3Instance = new Web3(window.ethereum);
       setWeb3(web3Instance);
 
-      // Get the list of accounts
       const accs = await web3Instance.eth.getAccounts();
       setAccounts(accs);
     } catch (error) {
@@ -61,19 +67,27 @@ const App = () => {
   };
 
   return (
-    <div className="container">
+    <div className="app-container">
       <Header
         connectWallet={connectWallet}
         disconnectWallet={disconnectWallet}
         isConnected={web3 ? accounts[0] : null}
       />
 
-      <TokenStats className="token-stats" />
-      <MintBurnRates className="mint-burn-rates" />
-      <QualifiedAddresses
-        className="qualified-addresses"
-        addresses={qualifiedAddresses}
-      />
+      <div className="content-container">
+        <div className="left-container">
+          <TokenStats {...tokenStats} className="token-stats" />
+          <QualifiedAddresses
+            className="qualified-addresses"
+            addresses={qualifiedAddresses}
+          />
+        </div>
+
+        <div className="right-container">
+          {/* Add your new component or content here */}
+          <h1>You are </h1>
+        </div>
+      </div>
     </div>
   );
 };

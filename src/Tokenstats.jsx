@@ -1,11 +1,39 @@
-// TokenStats.jsx
 import React from "react";
+import "./TokenStats.css"; // Import the CSS file
 
-const TokenStats = () => {
+const TokenStats = ({
+  mintRate,
+  burnRate,
+  isBurning,
+  macroContraction,
+  turn,
+  airdropAddress,
+}) => {
   return (
-    <div>
-      <h2>JUNO Is An ERC20 Token...</h2>
-      {/* Add your token stats content here */}
+    <div className="token-stats-container">
+      <h2>Token Stats</h2>
+      <ul>
+        <li>
+          <span className="stat-name">Mint Rate:</span> {mintRate}%
+        </li>
+        <li>
+          <span className="stat-name">Burn Rate:</span> {burnRate}%
+        </li>
+        <li>
+          <span className="stat-name">Is Burning:</span>{" "}
+          {isBurning ? "Yes" : "No"}
+        </li>
+        <li>
+          <span className="stat-name">Macro Contraction:</span>{" "}
+          {macroContraction ? "Yes" : "No"}
+        </li>
+        <li>
+          <span className="stat-name">Turn:</span> {turn}
+        </li>
+        <li>
+          <span className="stat-name">Airdrop Address:</span> {airdropAddress}
+        </li>
+      </ul>
     </div>
   );
 };

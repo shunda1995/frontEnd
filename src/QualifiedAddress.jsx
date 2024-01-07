@@ -1,9 +1,9 @@
 // QualifiedAddresses.jsx
 import React from "react";
-
+import "./QualifiedAddress.css";
 const QualifiedAddresses = ({ addresses }) => {
   return (
-    <div>
+    <div className="qualified-address-container">
       <h2>Qualified Addresses</h2>
       <table>
         <thead>
